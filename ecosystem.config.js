@@ -5,7 +5,7 @@ module.exports = {
 		cwd:"/root/proxy-web",
 		autorestart: true,
 		env:{
-			PORT:3000,
+			PORT:5220,
 			DEPLOY_PATH:'/p'
 		}
 	}],
