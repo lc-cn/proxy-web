@@ -6,7 +6,7 @@ function mapToObject(map:Headers):Record<string, string>{
     return Object.fromEntries(map.entries())
 }
 const app = new Koa();
-const port= Number(process.env.PORT||'3000')
+const port= Number(process.env.PORT||'5220')
 const deployPath=process.env.DEPLOY_PATH||'/p'
 app
     .use(koaStatic('public'))
@@ -33,8 +33,7 @@ app
             })
             ctx.body=await res.text()
         }catch (e){
-            ctx.writeHead(500)
-            ctx.body=String(`proxy host ${proxy_host} failed:${e.message}`)
+            ctx.throw(500,e.message)
         }
     })
 
